@@ -1,5 +1,7 @@
 """Python file to serve as the frontend"""
 import streamlit as st
+import os
+import getpass
 from streamlit_chat import message
 import faiss
 from langchain import OpenAI
@@ -11,6 +13,8 @@ index = faiss.read_index("docs.index")
 
 with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
+
+os.environ['OPENAI_API_KEY'] = getpass.getpass('OpenAI API Key:')
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)

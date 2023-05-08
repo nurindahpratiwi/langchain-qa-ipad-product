@@ -38,4 +38,13 @@ You can switch out `What is iPad?` for any question of your like, such as `What 
 
 ## 🚀 Code to deploy on StreamLit
 
-The code to run the StreamLit app is in `main.py`. 
+The code to run the StreamLit app is in `main.py`.
+add this code before load the chain section in the `main.py`  file before deploy it to streamlit.
+```python
+openai.api_key=st.secrets["api"]
+```
+
+replace chain variable with these one:
+```python
+chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0, openai_api_key=openai.api_key), vectorstore=store)
+```

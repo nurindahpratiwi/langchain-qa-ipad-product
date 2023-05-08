@@ -14,15 +14,15 @@ index = faiss.read_index("docs.index")
 with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
-os.environ['OPENAI_API_KEY'] = getpass.getpass('OpenAI API Key:')
+#os.environ['OPENAI_API_KEY'] = getpass.getpass('OpenAI API Key:')
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)
 
 
 # From here down is all the StreamLit UI.
-st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
-st.header("Blendle Notion QA Bot")
+st.set_page_config(page_title="iPad QA Bot, Notion Based", page_icon=":robot:")
+st.header("iPad QA Bot")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []

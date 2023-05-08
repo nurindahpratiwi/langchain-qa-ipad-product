@@ -1,15 +1,18 @@
 """Python file to serve as the frontend"""
 import streamlit as st
 import os
-import getpass
 from streamlit_chat import message
 import faiss
 from langchain import OpenAI
 from langchain.chains import VectorDBQAWithSourcesChain
 import pickle
-import openai
 
-openai.api_key = st.secrets.openai.OPENAI_API_KEY
+#openai.api_key = st.secrets.openai.OPENAI_API_KEY
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"],
+)
 
 # Load the LangChain.
 index = faiss.read_index("docs.index")

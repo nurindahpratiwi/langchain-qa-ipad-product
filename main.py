@@ -7,6 +7,7 @@ import faiss
 from langchain import OpenAI
 from langchain.chains import VectorDBQAWithSourcesChain
 import pickle
+import openai
 
 # Load the LangChain.
 index = faiss.read_index("docs.index")
@@ -14,7 +15,7 @@ index = faiss.read_index("docs.index")
 with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
-openai_api_key = st.secrets['openai']["OPENAI_API_KEY"]
+openai.api_key = st.secrets['openai']["OPENAI_API_KEY"]
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)

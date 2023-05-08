@@ -8,7 +8,7 @@ from langchain.chains import VectorDBQAWithSourcesChain
 import pickle
 import openai
 
-#openai.api_key = st.secrets.openai.OPENAI_API_KEY
+openai.api_key=st.secrets["api"]
 
 # Load the LangChain.
 index = faiss.read_index("docs.index")
@@ -31,7 +31,6 @@ if "past" not in st.session_state:
 
 
 def get_text():
-    openai.api_key=st.secrets["api"]
     input_text = st.text_input("You: ", "Hello, how are you?", key="input")
     return input_text
 

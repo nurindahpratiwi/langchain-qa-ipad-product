@@ -14,7 +14,7 @@ index = faiss.read_index("docs.index")
 with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
-#os.environ['OPENAI_API_KEY'] = getpass.getpass('OpenAI API Key:')
+os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)

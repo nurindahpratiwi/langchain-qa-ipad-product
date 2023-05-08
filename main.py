@@ -6,6 +6,7 @@ import faiss
 from langchain import OpenAI
 from langchain.chains import VectorDBQAWithSourcesChain
 import pickle
+import openai
 
 #openai.api_key = st.secrets.openai.OPENAI_API_KEY
 
@@ -17,11 +18,6 @@ with open("faiss_store.pkl", "rb") as f:
 
 store.index = index
 chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)
-
-st.write(
-    "Has environment variables been set:",
-    os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"]
-)
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="iPad QA Bot, Notion Based", page_icon=":robot:")
@@ -35,6 +31,7 @@ if "past" not in st.session_state:
 
 
 def get_text():
+    openai.api_key=st.secrets["api"]
     input_text = st.text_input("You: ", "Hello, how are you?", key="input")
     return input_text
 

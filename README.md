@@ -4,7 +4,7 @@
 
 💪 Built with [LangChain](https://github.com/hwchase17/langchain)
 
-# 🌲 Environment Setup
+## 🌲 Environment Setup (Local)
 
 In order to set your environment up to run the code here, first install all requirements:
 
@@ -17,12 +17,6 @@ Then set your OpenAI API key. OpenAI API should work only if you set your paid p
 ```shell
 export OPENAI_API_KEY=....
 ```
-
-# 📄 What is in here?
-- Example data from iPad Technical Specification
-- Python script to query Notion with a question
-- Code to deploy on StreamLit
-- Instructions for ingesting your own dataset
 
 ## 📊 Example Data
 This repo uses the [iPad Technical Specification Product](https://www.notion.so/nurindahpratiwi/iPad-8d1d01c0935b48cfae4971470303b5be?pvs=4) created on May, 08 2023/

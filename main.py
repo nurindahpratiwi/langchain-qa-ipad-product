@@ -20,7 +20,7 @@ chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorsto
 
 st.write(
     "Has environment variables been set:",
-    os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"],
+    os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"]
 )
 
 # From here down is all the StreamLit UI.
